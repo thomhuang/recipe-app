@@ -21,12 +21,16 @@ class ingredientsSpider(scrapy.Spider):
 			ingredients = response.css("li.ingredient::text").getall() #Returns array
 
 			recipe_procedure = response.css("ol.recipe-procedures-list.instructions").xpath('//*[@id="recipe-wrapper"]/div/ol/li/div/p/text()').getall() #Returns array
+			
+			tags = response.css("a.tag::text").getall()
 
 			yield{ #How we lay out our information in the outputted file
 				"title" : title,
 				"author" : author,
 				"ingredients" : ingredients,
-				"recipe procedure" : recipe_procedure
+				"recipe procedure" : recipe_procedure,
+				"tags" : tags
 			}
-            
-            #As a lot of the text itself contains commas, it might not be best to utilize a .csv extension. Perhaps a .json file would help, using the JSON1 extension of SQLite3
+
+			#to save as .csv, in your terminal: scrapy crawl recipe -o recipes.csv
+	
