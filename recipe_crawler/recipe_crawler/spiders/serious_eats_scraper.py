@@ -19,14 +19,14 @@ class ingredientsSpider(scrapy.Spider):
 
             author = response.css("a.name::text").get()
 
-            ingredients = "\n".join(response.css("li.ingredient::text").getall()[1:])
+            ingredients = "\n".join(response.css("li.ingredient::text").getall())
             # Returns string with each ingredient separated with a new line
 
             recipe_procedure = "\n".join(response.css("ol.recipe-procedures-list.instructions").xpath(
-                '//*[@id="recipe-wrapper"]/div/ol/li/div/p/text()').getall()[1:])
+                '//*[@id="recipe-wrapper"]/div/ol/li/div/p/text()').getall())
             # Returns string with each step of the recipe separated with a new line
 
-            tags = "\n".join(response.css("a.tag::text").getall()[1:])
+            tags = "\n".join(response.css("a.tag::text").getall())
             # Returns a string with each tag separated with a new line
 
             yield {  # How we lay out our information in the outputted file
