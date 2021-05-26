@@ -129,6 +129,8 @@ class RecipeTitleWindow(QWidget):
         self.search_text = ""
         self.search_category = ""
 
+        self.title_view = QTableView(self)
+
         self.recipe_window = RecipeWindow()
 
         # Create connection with SQlite3 language
@@ -186,24 +188,24 @@ class RecipeTitleWindow(QWidget):
                     f"It appears that there are no recipes pertaining to your search. Please try again!")
                 empty_error_dialog.exec_()
             else:
-                title_view = QTableView(self)  # Adds information from out query model to a QTableView to be seen
-                title_view.setModel(title_model)
-                title_view.setWindowTitle("Recipe List")
+                # Adds information from out query model to a QTableView to be seen
+                self.title_view.setModel(title_model)
+                self.title_view.setWindowTitle("Recipe List")
 
-                title_view.doubleClicked.connect(lambda: self.pass_info(title_view.selectionModel().currentIndex()))
+                self.title_view.doubleClicked.connect(lambda: self.pass_info(self.title_view.selectionModel().currentIndex()))
                 # Adds functionality of view_recipe when double clicking cell
 
-                title_view.setMaximumHeight(500) # Set max height of table + window
+                self.title_view.setMaximumHeight(500) # Set max height of table + window
                 self.setMaximumHeight(500)
 
-                title_view.resizeColumnToContents(0) # Sets size of column to contents, i.e. longest recipe title
+                self.title_view.resizeColumnToContents(0) # Sets size of column to contents, i.e. longest recipe title
 
                 # Each cell is ~ 30 pixels, so we make our window slightly smaller than the rows can fit if it
                 # is less than 16 cells (which populates ~ 500 pixel height) to keep width consistent w/ scroll bar
                 # and to make sure we have no empty space in our window
-                title_view.resize(title_view.columnWidth(0) + 40, 25*title_model.rowCount())
-                self.resize(title_view.columnWidth(0) + 40, 25*title_model.rowCount())
-
+                self.title_view.resize(self.title_view.columnWidth(0) + 40, 25*title_model.rowCount())
+                self.resize(self.title_view.columnWidth(0) + 40, 25*title_model.rowCount())
+                self.title_view.show()
                 self.show()
 
     def pass_info(self, index):  # Get current indexed position from click
@@ -224,6 +226,7 @@ class RecipeTitleWindow(QWidget):
         cell_val = index.sibling(index.row(), index.column()).data()  # Get cell value from the cell itself
         self.recipe_window.recipe_title = cell_val # Sets information in RecipeWindow object
 
+        self.title_view.hide()
         self.hide() # Hides our current window
         self.recipe_window.view_recipe(self.recipe_window.obtain_recipe())
 
