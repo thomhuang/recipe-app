@@ -4,6 +4,22 @@ from scrapy.linkextractors import LinkExtractor
 
 class food_spider(scrapy.Spider):
 
+	"""
+	This objects creates a Scrapy scraper which scrapes recipe information from seriouseats.com. 
+	It returns a csv with the following columns representing each recipe:
+
+	1. Recipe Title
+	2. Author
+	3. Cuisine
+	4. Ingredients
+	5. Recipe Procedure
+	6. Tags
+	7. Website URL
+
+	The scraper is given a main cuisine page Eg. Asia. It scrapes all the recipes from this page and also scans the links to other sub cuisines such as Indian, Chinese etc. 
+	The scraper visits the links of these subcuisines and scrapes the recipes from those pages as well. 
+	"""
+
 	name = "ultra"
 
 	start_urls = [
