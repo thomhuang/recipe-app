@@ -1,3 +1,5 @@
+# **How to use our webscraper**
+
 # **How to use our application**
 
 To run the application, if you don't have it installed, please install the `PyQt5` package in your environment. Then, place the `recipe_app_gui.py` file in the `src\app GUI` folder as well as the `recipes.db` file in the `data` folder in your desired location. Once done, go into your terminal, path to the location you placed both files in and enter `python3 recipe_app.py`. This should display the application.
