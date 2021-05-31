@@ -1,6 +1,6 @@
 # **How to use our application**
 
-To run the application, if you don't have it installed, please install the `PyQt5` package in your environment and import the `recipe_app_gui.ipynb` notebook, alongside the `recipes.db` file in your desired path (both contained in the `run_app` folder). Once you run the second cell of the notebook, the application should show.
+To run the application, if you don't have it installed, please install the `PyQt5` package in your environment. Then, place the `recipe_app_gui.py` file in the `src\app GUI` folder as well as the `recipes.db` file in the `data` folder in your desired location. Once done, go into your terminal, path to the location you placed both files in and enter `python3 recipe_app.py`. This should display the application.
 
 If you would like the general idea of what we aim to do with our application, please refer to the `proposal.md` file. Our application contains a number of recipes and its information to be searched for by the user. In particular, there are three aspects to our user interface:
 
