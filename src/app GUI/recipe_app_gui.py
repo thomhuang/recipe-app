@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import (QWidget, QApplication, QMenuBar, QLabel, QComboBox,
 from PyQt5.QtCore import (Qt)
 from PyQt5.QtGui import (QFont)
 
+
 class SearchWindow(QWidget):
     def __init__(self):
         super().__init__()
