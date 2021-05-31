@@ -1,5 +1,23 @@
 # **How to use our webscraper**
 
+1. Download the scraper folder from this repositiory
+
+2. Open Terminal/Command Line and change directory to the scraper folder by typing `cd /address_of_folder` in the Terminal
+
+3. Type `conda activate base` in order to enable the base Python environment in `Anaconda` 
+
+    (Note: You may need to download `Anaconda` if your do not have it). 
+
+4. Type `pip install Scrapy` to install the `Scrapy` package. 
+
+    Type `Scrapy -v` to check for correct installation.
+
+5. To activate the scraper and get the data in CSV format in a file called my_file.csv, type:
+
+    `scrapy crawl ultra -o my_file.csv`
+
+    where `ultra` is the name of the scraper we need to run. 
+
 # **How to use our application**
 
 To run the application, if you don't have it installed, please install the `PyQt5` package in your environment. Then, place the `recipe_app_gui.py` file in the `src\app GUI` folder as well as the `recipes.db` file in the `data` folder in your desired location. Once done, go into your terminal, path to the location you placed both files in and enter `python3 recipe_app.py`. This should display the application.
